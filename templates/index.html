@@ -1,0 +1,33 @@
+<head>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+
+<body>
+    <div class="content">
+        <h1>Climb On!</h1>
+        <form method="post">
+            <div>
+                <label>Difficulty</label>
+                <input name="difficulty" />
+            </div>
+            <div>
+                <label>Number of Attempts</label>
+                <input name="attempts" />
+            </div>
+            <div>
+                <label>Date Completed</label>
+                <input name="date" />
+            </div>
+            <div>
+                <label>Notes</label>
+                <textarea name="notes"></textarea>
+            </div>
+            <button>Send it</button>
+        </form>
+        <ul>
+            {% for report in reports %}
+            <li>{{report.difficulty}} {{report.attempts}} {{report.date}} {{report.notes}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>

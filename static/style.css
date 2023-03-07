@@ -1,0 +1,27 @@
+html {
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: radial-gradient(circle,#553c9b,#ee4a7b);
+}
+
+form {
+    padding: 1rem;
+    background-color: #6dc3fc;
+    border-radius: 0.25rem;
+}
+
+form>div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
