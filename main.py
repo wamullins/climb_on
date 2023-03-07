@@ -18,11 +18,11 @@ def hello_world():
         </div>
         <div>
             <label>Number of Attempts</label>
-            <input named="attempts"</label>
+            <input name="attempts"/>
         </div>
         <div>
             <label>Date Completed</label>
-            <input named="date"</label>
+            <input name="date"/>
         </div>
         <div>
             <label>Notes</label>
