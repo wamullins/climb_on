@@ -1,23 +1,16 @@
 from flask import request, render_template
 from climb_on.app import app, db
 from climb_on.report import Report
+from climb_on.user import User
 
 
-@app.route("/")
-def hello_world():
-    reports = db.session.execute(db.select(Report).order_by(Report.id)).scalars()
-    return render_template("index.html", reports=reports)
+@app.route("/<int:user_id>", methods=["GET", "POST"])
+def report_view(user_id: int):
+    if request.method == "POST":
+        report = Report.from_form(request.form)
+        db.session.add(report)
+        db.session.commit()
 
+    user = User.query.get(user_id)
 
-@app.route("/", methods=["POST"])
-def handle_submission():
-    report = Report(
-        request.form.get("difficulty"),
-        request.form.get("attempts"),
-        request.form.get("date"),
-        request.form.get("notes"),
-    )
-    db.session.add(report)
-    db.session.commit()
-
-    return hello_world()
+    return render_template("index.html", reports=user.reports)
